@@ -1,5 +1,8 @@
 # NYT Vote Scraper
-Scrapes the NYT Votes Remaining Page JSON and commits it back to this repo. The goal is to be able to view history and diffs of `results.json`.
+Scrapes the NYT Votes Remaining Page JSON at https://static01.nyt.com/elections-assets/2020/data/api/2020-11-03/votes-remaining-page/national/president.json and commits it back to this repo. The goal is to be able to view history and diffs of `results.json`.
+Also includes Wayback Machine scrapes of the above page before this auto scraper was deployed.
+
+The TabulateVoteCounts.py script extracts the vote counts from the snapshots of the above page and also from the precinct-metadata files referenced by that and generates a table at VoteCounts.csv.
 
 ## Outputted files
 
