@@ -363,10 +363,12 @@ def write_csv_align_timeseries(grouped):
                             js = json.load(f)
                         race = js['data']['races'][state_index]
                         next_state_record_index = 0;
-                        for xts in race['timeseries']:
-                                # Ignore first entry in timeseries for PA as it has anomalous higher timestamp than the following engtries
-                                if 'Pennsylvania' == race['state_name'] and '2020-11-04T09:25:23Z' == xts['timestamp']:
+                        ts = race['timeseries']
+                        for ts_index in range(len(ts)):
+                                # Ignore any entry in timeseries which has anomalous higher timestamp than the following entry
+                                if ts_index != (len(ts)-1) and ts[ts_index]['timestamp'] > ts[ts_index+1]['timestamp']:
                                     continue
+                                xts = ts[ts_index]
                                 next_state_record_index = search_matching_record(xts['timestamp'], state_records, next_state_record_index)
                                 wr.writerow((race['state_name'], xts['timestamp'], xts['votes'], xts['eevp'], xts['vote_shares']['trumpd'], xts['vote_shares']['bidenj'],) + state_records[next_state_record_index][1:])
 
