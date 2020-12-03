@@ -26,6 +26,7 @@ InputRecord = collections.namedtuple(
     'InputRecord',
     [
         'state_index',
+        'file_timestamp',
         'Votes_Remaining_File',
         'state_last_updated',
         'Total_Votes',
@@ -75,13 +76,14 @@ recordFetched = {}
 def git_commits_for(path):
     return subprocess.check_output(['git', 'log', "--format=%H", path]).strip().decode().splitlines()
 
-def git_save(ref, name, repo_client):
+def git_save(ref, name):
     # Open a temporary file in the cache directory to save the committed file, if it doesn't already exist
     cache_path = os.path.join(CACHE_DIR, ref + ".json")
     if os.path.exists(cache_path):
         return cache_path
 
-    commit_tree = repo_client.commit(ref).tree
+    repo = git.Repo('.', odbt=git.db.GitCmdObjectDB)
+    commit_tree = repo.commit(ref).tree
     with open(cache_path, mode='wb+') as f:
         commit_tree[name].stream_data(f)
         f.close
@@ -215,11 +217,11 @@ def fetch_precinct_data(session, record, url):
 
 def fetch_record(session, ref, out, lock):
         global recordFetched
-        repo = git.Repo('.', odbt=git.db.GitCmdObjectDB)
-        cache_path = git_save(ref, 'results.json', repo)
+        cache_path = git_save(ref, 'results.json')
         with open(cache_path, encoding="utf8") as f:
                 js = json.load(f)
         races = js['data']['races']
+        file_timestamp = js['meta']['timestamp']
         num_states = min(51, len(races));
         for index in range(num_states):
                 race = races[index]
@@ -231,7 +233,7 @@ def fetch_record(session, ref, out, lock):
                 
 
                 # Check if the entry has already been added
-                dictKey = f'{race["state_id"]}:{timestamp}'
+                dictKey = f'{race["state_id"]}:{file_timestamp}'
                 lock.acquire()
 
                 if dictKey in recordFetched:
@@ -279,6 +281,7 @@ def fetch_record(session, ref, out, lock):
  
                 record = InputRecord(
                             index,
+                            file_timestamp,
                             f'{ref}.json',
                             timestamp,
                             race['votes'],
@@ -322,7 +325,7 @@ def fetch_all_records():
         #for ref in commits:
             #fetch_record(s, ref, out, lock)
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=75) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
                 # Start the load operations and mark each future with its reference
                 future_to_ref = {executor.submit(fetch_record, s, ref, out, lock): ref for ref in commits}
                 for future in concurrent.futures.as_completed(future_to_ref):
@@ -332,7 +335,7 @@ def fetch_all_records():
                         except Exception as exc:
                             print('%s generated an exception: %s' % (ref, exc))
                                         
-        out.sort(key=lambda row: row.state_last_updated)
+        out.sort(key=lambda row: row.file_timestamp)
         grouped = collections.defaultdict(list)
         for row in out:
                 grouped[row.state_index].append(row)
@@ -340,7 +343,7 @@ def fetch_all_records():
         return grouped
 
 def search_matching_record(timestamp, state_records, next_search_index):
-        while timestamp >= state_records[next_search_index].state_last_updated:
+        while timestamp >= min(state_records[next_search_index].file_timestamp, state_records[next_search_index].state_last_updated):
                 next_search_index += 1
                 if next_search_index == len(state_records):
                     break
@@ -351,14 +354,13 @@ def search_matching_record(timestamp, state_records, next_search_index):
                 return 0
         
 def write_csv_align_timeseries(grouped):
-        repo = git.Repo('.', odbt=git.db.GitCmdObjectDB)
         with open('VoteCounts.csv', 'w', newline='') as csvfile:
                 wr = csv.writer(csvfile)
-                wr.writerow(('state', 'timestamp', 'timeseries_votes', 'eevp', 'Trump Share', 'Biden Share',) + InputRecord._fields[1:])
+                wr.writerow(('state', 'timestamp', 'timeseries_votes', 'eevp', 'Trump Share', 'Biden Share',) + InputRecord._fields[2:])
                 for state_index in sorted(grouped):
                         state_records = grouped[state_index]
                         ref = state_records[-1].Votes_Remaining_File[:-5]
-                        cache_path = git_save(ref, 'results.json', repo)
+                        cache_path = git_save(ref, 'results.json')
                         with open(cache_path, encoding="utf8") as f:
                             js = json.load(f)
                         race = js['data']['races'][state_index]
@@ -370,11 +372,11 @@ def write_csv_align_timeseries(grouped):
                                     continue
                                 xts = ts[ts_index]
                                 next_state_record_index = search_matching_record(xts['timestamp'], state_records, next_state_record_index)
-                                wr.writerow((race['state_name'], xts['timestamp'], xts['votes'], xts['eevp'], xts['vote_shares']['trumpd'], xts['vote_shares']['bidenj'],) + state_records[next_state_record_index][1:])
+                                wr.writerow((race['state_name'], xts['timestamp'], xts['votes'], xts['eevp'], xts['vote_shares']['trumpd'], xts['vote_shares']['bidenj'],) + state_records[next_state_record_index][2:])
 
                         #Now write out any votes remaining page updates that were not captured in the timeseries
                         for state_record_index in range(next_state_record_index+1, len(state_records)):
-                            wr.writerow((race['state_name'], xts['timestamp'], xts['votes'], xts['eevp'], xts['vote_shares']['trumpd'], xts['vote_shares']['bidenj'],) + state_records[state_record_index][1:])
+                            wr.writerow((race['state_name'], xts['timestamp'], xts['votes'], xts['eevp'], xts['vote_shares']['trumpd'], xts['vote_shares']['bidenj'],) + state_records[state_record_index][2:])
         return                        
                         
 
