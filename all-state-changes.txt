@@ -1,5 +1,5 @@
 ----------------------  --------------------------------------------------------------------------------
-Last updated:           2020-12-03 14:50 UTC
+Last updated:           2020-12-03 15:20 UTC
 Latest batch received:  2020-12-02 18:41 UTC
 Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 ----------------------  --------------------------------------------------------------------------------
@@ -3189,7 +3189,7 @@ South Dakota (EV: 3) Total Votes: (Trump: 261,043, Biden: 150,471)
 
 Tennessee (EV: 11) Total Votes: (Trump: 1,852,475, Biden: 1,143,711)
 ----------------  ---  ----------------  ----------------------  ---------------------------  -----------------  ---------------------  ----------------
-2020-12-03 14:34  ***  Trump up 708,764  Unknown                 Δ:   2,854 (Biden +11.6%)    100.00% precincts  Unknown                & trends  52.47%
+2020-12-03 14:34  ---  Trump up 708,764  Unknown                 Δ:   2,854 (Biden +11.6%)    100.00% precincts  Unknown                & trends  52.47%
 2020-12-03 14:07  ---  Trump up 709,428  Left (est.): 1,562      Δ:     616 (Biden + 5.7%)    99.63% precincts   Biden needs 23196.02%  & trends  50.31%
 2020-12-03 03:47  ---  Trump up 709,498  Left (est.): 2,348      Δ:   3,520 (Biden +13.4%)    99.63% precincts   Biden needs 15449.34%  & trends  49.97%
 2020-11-11 22:51  ---  Trump up 710,444  Left (est.): 4,337      Δ:       0 (n/a)             99.48% precincts   Biden needs 8398.14%   & trends  47.11%
