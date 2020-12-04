@@ -143,9 +143,9 @@ def fetch_precinct_data(session, record, url):
         with open(cache_path, encoding="utf8") as f:
             js = json.load(f)
                 
-        if "precinct_totals" in js:
-                precincts_Total = len(js['precinct_totals'])
-                precinct_json_key = "precinct_totals"
+        if "precinct_by_vote_type" in js:
+                #precincts_Total = len(js['precinct_totals'])
+                precinct_json_key = "precinct_by_vote_type"
                 for county in js['county_totals']:
                     if 'uncounted_mail_ballots' in county:
                         precinct_Meta_Counties_uncounted_mail_ballots += int(county['uncounted_mail_ballots'])
@@ -199,12 +199,18 @@ def fetch_precinct_data(session, record, url):
 
         for precinct in js[precinct_json_key]:
                 if 'COUNTY'!=precinct['precinct_id']:
-                        if 'precinct_totals' == precinct_json_key and True == precinct['is_reporting']:
-                            precincts_Reporting += 1
-                        precincts_Total_Votes += int(precinct['votes'])
-                        precincts_Trump_Votes += int(precinct['results']['trumpd'])
-                        precincts_Biden_Votes += int(precinct['results']['bidenj'])
-                        if 'jorgensenj' in precinct['results']:
+                        if 'precinct_by_vote_type' == precinct_json_key and 'vote_type' in precinct:
+                            if precinct['vote_type'] == 'electionday':
+                                precincts_Total += 1
+                                if True == precinct['is_reporting']:
+                                    precincts_Reporting += 1
+                        if None != precinct['votes']:
+                            precincts_Total_Votes += int(precinct['votes'])
+                        if None != precinct['results']['trumpd']:
+                            precincts_Trump_Votes += int(precinct['results']['trumpd'])
+                        if None != precinct['results']['bidenj']:
+                            precincts_Biden_Votes += int(precinct['results']['bidenj'])
+                        if 'jorgensenj' in precinct['results'] and None != precinct['results']['jorgensenj']:
                             precincts_Jorgensen_Votes += int(precinct['results']['jorgensenj'])
         return record._replace(
                             Precinct_Meta_Counties_Total_Votes = precinct_Meta_Counties_Total_Votes,
