@@ -15,10 +15,15 @@ import io
 AK_INDEX = 0
 AZ_INDEX = 3
 GA_INDEX = 10
+MI_INDEX = 22
 NC_INDEX = 27
 NV_INDEX = 33
 PA_INDEX = 38
 STATE_INDEXES = range(51) # 50 States + DC
+
+state_short2Index = {'GA':GA_INDEX, 'MI':MI_INDEX, 'NC':NC_INDEX, 'PA':PA_INDEX}
+
+precinct_metadata_url_list_files = ['GAPrecinctURLList.txt', 'MIPrecinctURLList.txt', 'NCPrecinctURLList.txt', 'PAPrecinctURLList.txt']
 
 CACHE_DIR = '_cache'
 
@@ -46,7 +51,11 @@ InputRecord = collections.namedtuple(
         'Counties_Biden_Absentee_Votes',
         'Counties_Jorgensen_Votes',
         'Counties_Jorgensen_Absentee_Votes',
+        'Precincts_Total',
+        'Precincts_Reporting',
         'Precinct_Metadata_Filename',
+        'Precinct_Meta_Precincts_Total',
+        'Precinct_Meta_Precincts_Reporting',
         'Precinct_Meta_Counties_Total_Votes',
         'Precinct_Meta_Counties_Total_Electionday_Votes',
         'Precinct_Meta_Counties_Total_Absentee_Votes',
@@ -109,6 +118,8 @@ def fetch_precinct_data(session, record, url):
         precinct_Meta_Counties_Jorgensen_Electionday_Votes = 0
         precinct_Meta_Counties_Jorgensen_Absentee_Votes = 0
         precinct_Meta_Counties_Jorgensen_Provisional_Votes = 0
+        precincts_Total = 0
+        precincts_Reporting = 0
         precincts_Total_Votes = 0
         precincts_Trump_Votes = 0
         precincts_Biden_Votes = 0
@@ -133,6 +144,7 @@ def fetch_precinct_data(session, record, url):
             js = json.load(f)
                 
         if "precinct_totals" in js:
+                precincts_Total = len(js['precinct_totals'])
                 precinct_json_key = "precinct_totals"
                 for county in js['county_totals']:
                     if 'uncounted_mail_ballots' in county:
@@ -181,10 +193,14 @@ def fetch_precinct_data(session, record, url):
                                 if None!=county['results']['jorgensenj']:
                                     precinct_Meta_Counties_Jorgensen_Provisional_Votes += int(county['results']['jorgensenj'])
         else:
+                precincts_Total = js['meta']['precinct_items_total']
+                precincts_Reporting = js['meta']['precinct_items_reporting']
                 precinct_json_key = "precincts"
 
         for precinct in js[precinct_json_key]:
                 if 'COUNTY'!=precinct['precinct_id']:
+                        if 'precinct_totals' == precinct_json_key and True == precinct['is_reporting']:
+                            precincts_Reporting += 1
                         precincts_Total_Votes += int(precinct['votes'])
                         precincts_Trump_Votes += int(precinct['results']['trumpd'])
                         precincts_Biden_Votes += int(precinct['results']['bidenj'])
@@ -209,6 +225,8 @@ def fetch_precinct_data(session, record, url):
                             Precinct_Meta_Counties_Jorgensen_Absentee_Votes = precinct_Meta_Counties_Jorgensen_Absentee_Votes,
                             Precinct_Meta_Counties_Jorgensen_Provisional_Votes = precinct_Meta_Counties_Jorgensen_Provisional_Votes,
                             Precinct_Metadata_Filename = filename,
+                            Precinct_Meta_Precincts_Total = precincts_Total,
+                            Precinct_Meta_Precincts_Reporting = precincts_Reporting,
                             Precincts_Total_Votes = precincts_Total_Votes,
                             Precincts_Trump_Votes = precincts_Trump_Votes,
                             Precincts_Biden_Votes = precincts_Biden_Votes,
@@ -301,8 +319,10 @@ def fetch_record(session, ref, out, lock):
                             Counties_Biden_Absentee_Votes,
                             Counties_Jorgensen_Votes,
                             Counties_Jorgensen_Absentee_Votes,
+                            race['precincts_total'],
+                            race['precincts_reporting'],
                             'NA',
-                            *([0]*21)
+                            *([0]*23)
                         )
 
                 # Fetch precinct metadata, if available
@@ -311,7 +331,26 @@ def fetch_record(session, ref, out, lock):
                 
                 out.append(record)
         return True
-        
+
+def fetch_precinct_only_record(session, url, out):
+    state_short = url.split('/')[-1][:2]
+    timestamp = url.split('/')[-1][-29:-10] + 'Z'
+    record = InputRecord(
+                state_short2Index[state_short],
+                timestamp,
+                'NA',
+                timestamp,
+                *([0]*19),
+                'NA',
+                *([0]*23)
+            )
+
+    # Fetch precinct metadata
+    record = fetch_precinct_data(session, record, url)
+                
+    out.append(record)
+    return True
+    
 def fetch_all_records():
         # Use connection pooling to improve network performance
         s = requests.Session()
@@ -334,6 +373,34 @@ def fetch_all_records():
                             res = future.result()
                         except Exception as exc:
                             print('%s generated an exception: %s' % (ref, exc))
+
+        PRECINCT_METADATA_URLS = []
+        #Read the files containing the precinct_metadata URL lists for some states
+        for filename in precinct_metadata_url_list_files:
+            with open(filename, mode='r', encoding="utf8") as url_f:
+                PRECINCT_METADATA_URLS.extend(url_f.read().splitlines())
+
+        #Remove the precinct metadata URLs from the above list that are already in the results.json list
+        for row in out:
+            if 'NA' == row.Precinct_Metadata_Filename:
+                continue
+            for url in PRECINCT_METADATA_URLS:
+                filename = url.split('/')[-1].replace(':','-')
+                if filename == row.Precinct_Metadata_Filename:
+                    PRECINCT_METADATA_URLS.remove(url)
+                    break
+
+        # Now fetch and create records for precinct metadata URLs that were not captured in the results.json snapshot list
+        with concurrent.futures.ThreadPoolExecutor(max_workers=30) as executor:
+                # Start the load operations and mark each future with its reference
+                future_to_ref = {executor.submit(fetch_precinct_only_record, s, url, out): url for url in PRECINCT_METADATA_URLS}
+                for future in concurrent.futures.as_completed(future_to_ref):
+                        url = future_to_ref[future]
+                        try:
+                            res = future.result()
+                        except Exception as exc:
+                            print('%s generated an exception: %s' % (url, exc))
+
                                         
         out.sort(key=lambda row: row.file_timestamp)
         grouped = collections.defaultdict(list)
@@ -372,11 +439,18 @@ def write_csv_align_timeseries(grouped):
                                     continue
                                 xts = ts[ts_index]
                                 next_state_record_index = search_matching_record(xts['timestamp'], state_records, next_state_record_index)
-                                wr.writerow((race['state_name'], xts['timestamp'], xts['votes'], xts['eevp'], xts['vote_shares']['trumpd'], xts['vote_shares']['bidenj'],) + state_records[next_state_record_index][2:])
+                                
+                                #If this record doesn't have Votes remaining file data use the same from previous record
+                                if 'NA' != state_records[next_state_record_index].Votes_Remaining_File:
+                                    Votes_Remaining_fields = state_records[next_state_record_index][2:23]                            
+                                wr.writerow((race['state_name'], xts['timestamp'], xts['votes'], xts['eevp'], xts['vote_shares']['trumpd'], xts['vote_shares']['bidenj'],) + Votes_Remaining_fields + state_records[next_state_record_index][23:])
 
                         #Now write out any votes remaining page updates that were not captured in the timeseries
                         for state_record_index in range(next_state_record_index+1, len(state_records)):
-                            wr.writerow((race['state_name'], xts['timestamp'], xts['votes'], xts['eevp'], xts['vote_shares']['trumpd'], xts['vote_shares']['bidenj'],) + state_records[state_record_index][2:])
+                            #If this record doesn't have Votes remaining file data use the same from previous record
+                            if 'NA' != state_records[state_record_index].Votes_Remaining_File:
+                                Votes_Remaining_fields = state_records[state_record_index][2:23]
+                            wr.writerow((race['state_name'], xts['timestamp'], xts['votes'], xts['eevp'], xts['vote_shares']['trumpd'], xts['vote_shares']['bidenj'],) + Votes_Remaining_fields + state_records[state_record_index][23:])
         return                        
                         
 
