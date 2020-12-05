@@ -1,5 +1,5 @@
 -----------------------------------  --------------------------------------------------------------------------------
-Last updated:                        2020-12-05 18:21 UTC
+Last updated:                        2020-12-05 18:44 UTC
 Latest batch received: (Washington)  2020-12-05 00:26 UTC
 Prettier web version:                https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 -----------------------------------  --------------------------------------------------------------------------------
@@ -3513,7 +3513,7 @@ Virginia (EV: 13) Total Votes: (Biden: 2,413,568, Trump: 1,962,430)
 
 Washington (EV: 12) Total Votes: (Biden: 2,369,612, Trump: 1,584,651)
 ----------------  ---  ----------------  ----------------------  ---------------------------  -----------------  ----------------------  ----------------
-2020-12-05 17:57  ***  Biden up 784,961  Unknown                 Δ:     238 (Biden +23.5%)    100.00% precincts  Unknown                 & trends  49.12%
+2020-12-05 17:57  ---  Biden up 784,961  Unknown                 Δ:     238 (Biden +23.5%)    100.00% precincts  Unknown                 & trends  49.12%
 2020-11-25 01:08  ---  Biden up 784,849  Unknown                 Δ:     334 (Trump +14.7%)    100.00% precincts  Unknown                 & trends  49.31%
 2020-11-25 00:31  ---  Biden up 784,947  Unknown                 Δ:   1,255 (Biden +17.3%)    100.00% precincts  Unknown                 & trends  49.13%
 2020-11-24 23:33  ---  Biden up 784,514  Unknown                 Δ:      71 (Trump +16.2%)    100.00% precincts  Unknown                 & trends  49.68%
