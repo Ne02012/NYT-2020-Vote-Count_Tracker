@@ -1,5 +1,5 @@
 ----------------------  --------------------------------------------------------------------------------
-Last updated:           2020-12-05 23:39 UTC
+Last updated:           2020-12-05 23:50 UTC
 Latest batch received:  2020-12-05 22:37 UTC
 Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 ----------------------  --------------------------------------------------------------------------------
@@ -1084,7 +1084,7 @@ Indiana (EV: 11) Total Votes: (Trump: 1,729,852, Biden: 1,242,495)
 
 Iowa (EV: 6) Total Votes: (Trump: 897,672, Biden: 759,061)
 ----------------  ---  ----------------  ----------------------  -------------------------  -----------------  ----------------------  ----------------
-2020-12-05 23:21  ***  Trump up 138,611  Left (est.): 48         Δ:       0 (n/a)           100.00% precincts  Biden needs 147411.63%  & trends  37.01%
+2020-12-05 23:21  ---  Trump up 138,611  Left (est.): 48         Δ:       0 (n/a)           100.00% precincts  Biden needs 147411.63%  & trends  37.01%
 2020-12-05 00:26  ---  Trump up 138,611  Unknown                 Δ:     127 (Trump + 5.9%)  100.00% precincts  Unknown                 & trends  37.01%
 2020-12-04 23:47  ---  Trump up 138,596  Left (est.): 1,320      Δ:      18 (Biden + 5.6%)  99.10% precincts   Biden needs 5408.02%    & trends  36.98%
 2020-12-04 23:37  ---  Trump up 138,598  Left (est.): 961        Δ:      65 (Trump +20.8%)  98.62% precincts   Biden needs 7409.72%    & trends  36.97%
