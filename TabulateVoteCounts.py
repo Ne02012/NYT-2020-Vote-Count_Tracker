@@ -56,6 +56,7 @@ InputRecord = collections.namedtuple(
         'Precinct_Metadata_Filename',
         'Precinct_Meta_Precincts_Total',
         'Precinct_Meta_Precincts_Reporting',
+        'Precinct_Meta_Precincts_Reporting_ElectionDay_Votes',
         'Precinct_Meta_Counties_Total_Votes',
         'Precinct_Meta_Counties_Total_Electionday_Votes',
         'Precinct_Meta_Counties_Total_Absentee_Votes',
@@ -120,6 +121,7 @@ def fetch_precinct_data(session, record, url):
         precinct_Meta_Counties_Jorgensen_Provisional_Votes = 0
         precincts_Total = 0
         precincts_Reporting = 0
+        precincts_Reporting_ElectionDay_Votes = 0
         precincts_Total_Votes = 0
         precincts_Trump_Votes = 0
         precincts_Biden_Votes = 0
@@ -199,8 +201,10 @@ def fetch_precinct_data(session, record, url):
 
         for precinct in js[precinct_json_key]:
                 if 'COUNTY'!=precinct['precinct_id']:
-                        if 'precinct_by_vote_type' == precinct_json_key and 'vote_type' in precinct:
-                            if precinct['vote_type'] == 'electionday':
+                        if 'vote_type' in precinct and precinct['vote_type'] == 'electionday':
+                            if True == precinct['is_reporting']:
+                                precincts_Reporting_ElectionDay_Votes += 1
+                            if 'precinct_by_vote_type' == precinct_json_key:
                                 precincts_Total += 1
                                 if True == precinct['is_reporting']:
                                     precincts_Reporting += 1
@@ -233,6 +237,7 @@ def fetch_precinct_data(session, record, url):
                             Precinct_Metadata_Filename = filename,
                             Precinct_Meta_Precincts_Total = precincts_Total,
                             Precinct_Meta_Precincts_Reporting = precincts_Reporting,
+                            Precinct_Meta_Precincts_Reporting_ElectionDay_Votes = precincts_Reporting_ElectionDay_Votes,
                             Precincts_Total_Votes = precincts_Total_Votes,
                             Precincts_Trump_Votes = precincts_Trump_Votes,
                             Precincts_Biden_Votes = precincts_Biden_Votes,
@@ -328,7 +333,7 @@ def fetch_record(session, ref, out, lock):
                             race['precincts_total'],
                             race['precincts_reporting'],
                             'NA',
-                            *([0]*23)
+                            *([0]*24)
                         )
 
                 # Fetch precinct metadata, if available
@@ -348,7 +353,7 @@ def fetch_precinct_only_record(session, url, out):
                 timestamp,
                 *([0]*19),
                 'NA',
-                *([0]*23)
+                *([0]*24)
             )
 
     # Fetch precinct metadata
