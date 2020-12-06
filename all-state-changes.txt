@@ -1,8 +1,8 @@
-----------------------  --------------------------------------------------------------------------------
-Last updated:           2020-12-06 13:38 UTC
-Latest batch received:  2020-12-05 22:37 UTC
-Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
-----------------------  --------------------------------------------------------------------------------
+--------------------------------------  --------------------------------------------------------------------------------
+Last updated:                           2020-12-06 13:51 UTC
+Latest batch received: (West Virginia)  2020-12-05 22:37 UTC
+Prettier web version:                   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
+--------------------------------------  --------------------------------------------------------------------------------
 
 Alabama (EV: 9) Total Votes: (Trump: 1,441,168, Biden: 849,648)
 ----------------  ---  ----------------  ----------------------  ---------------------------  -----------------  -----------------------  ----------------
@@ -3673,6 +3673,7 @@ Washington (EV: 12) Total Votes: (Biden: 2,369,612, Trump: 1,584,651)
 
 West Virginia (EV: 5) Total Votes: (Trump: 545,382, Biden: 235,984)
 ----------------  ---  ----------------  --------------------  -------------------------  ----------------  ---------------------  ----------------
+2020-12-06 13:47  ***  Trump up 309,398  Unknown               Δ:       0 (n/a)           99.82% precincts  Unknown                & trends  35.60%
 2020-12-01 21:54  ---  Trump up 309,398  Unknown               Δ:     468 (Trump +20.7%)  99.12% precincts  Unknown                & trends  35.60%
 2020-11-24 15:40  ---  Trump up 309,204  Left (est.): 448      Δ:       0 (n/a)           99.12% precincts  Biden needs 35146.16%  & trends  35.68%
 2020-11-23 20:33  ---  Trump up 309,204  Left (est.): 448      Δ:       0 (n/a)           99.12% precincts  Biden needs 35146.16%  & trends  35.68%
