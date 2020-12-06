@@ -1,5 +1,5 @@
 ----------------------  --------------------------------------------------------------------------------
-Last updated:           2020-12-06 02:03 UTC
+Last updated:           2020-12-06 02:35 UTC
 Latest batch received:  2020-12-05 22:37 UTC
 Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 ----------------------  --------------------------------------------------------------------------------
@@ -2699,7 +2699,7 @@ Oklahoma (EV: 7) Total Votes: (Trump: 1,020,280, Biden: 503,890)
 
 Oregon (EV: 7) Total Votes: (Biden: 1,340,383, Trump: 958,448)
 ----------------  ---  ----------------  ----------------------  ---------------------------  -----------------  --------------------  ----------------
-2020-12-06 01:41  ***  Biden up 381,935  Unknown                 Δ:     129 (Biden +21.3%)    100.00% precincts  Unknown               & trends  52.18%
+2020-12-06 01:41  ---  Biden up 381,935  Unknown                 Δ:     129 (Biden +21.3%)    100.00% precincts  Unknown               & trends  52.18%
 2020-12-04 02:06  ---  Biden up 381,880  Left (est.): 2,862      Δ:       0 (n/a)             99.93% precincts   Trump needs 6940.64%  & trends  52.23%
 2020-12-02 14:42  ---  Biden up 381,880  Left (est.): 3,142      Δ:       1 (Trump +50.0%)    99.93% precincts   Trump needs 6326.58%  & trends  52.23%
 2020-12-01 21:54  ---  Biden up 381,881  Left (est.): 3,143      Δ:       0 (n/a)             99.93% precincts   Trump needs 6324.60%  & trends  52.23%
