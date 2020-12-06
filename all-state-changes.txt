@@ -1,5 +1,5 @@
 ----------------------  --------------------------------------------------------------------------------
-Last updated:           2020-12-06 04:44 UTC
+Last updated:           2020-12-06 04:54 UTC
 Latest batch received:  2020-12-05 22:37 UTC
 Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 ----------------------  --------------------------------------------------------------------------------
@@ -2096,7 +2096,7 @@ Montana (EV: 3) Total Votes: (Trump: 343,602, Biden: 244,786)
 
 Nebraska (EV: 5) Total Votes: (Trump: 556,846, Biden: 374,583)
 ----------------  ---  ----------------  --------------------  --------------------------  -----------------  ---------------------  -----------------
-2020-12-06 04:22  ***  Trump up 182,263  Unknown               Δ:       0 (n/a)            100.00% precincts  Unknown                & trends  -54.42%
+2020-12-06 04:22  ---  Trump up 182,263  Unknown               Δ:       0 (n/a)            100.00% precincts  Unknown                & trends  -54.42%
 2020-11-25 03:24  ---  Trump up 182,263  Unknown               Δ:      98 (Trump + 5.1%)   98.75% precincts   Unknown                & trends  -54.42%
 2020-11-24 13:22  ---  Trump up 182,253  Left (est.): 97       Δ:       0 (n/a)            98.75% precincts   Biden needs 96096.99%  & trends  -54.50%
 2020-11-23 13:22  ---  Trump up 182,253  Left (est.): 97       Δ:     638 (Trump +22.3%)   98.68% precincts   Biden needs 96096.99%  & trends  -54.50%
