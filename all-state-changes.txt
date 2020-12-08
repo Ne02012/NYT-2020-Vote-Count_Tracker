@@ -1,5 +1,5 @@
 ----------------------  --------------------------------------------------------------------------------
-Last updated:           2020-12-07 23:52 UTC
+Last updated:           2020-12-08 00:57 UTC
 Latest batch received:  2020-12-07 20:17 UTC
 Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 ----------------------  --------------------------------------------------------------------------------
@@ -2253,7 +2253,7 @@ New Hampshire (EV: 4) Total Votes: (Biden: 424,921, Trump: 365,654)
 
 New Jersey (EV: 14) Total Votes: (Biden: 2,608,335, Trump: 1,883,274)
 ----------------  ---  ----------------  ----------------------  ---------------------------  -----------------  ----------------------  -----------------
-2020-12-07 23:37  ***  Biden up 725,061  Unknown                 Δ:       0 (n/a)             100.00% precincts  Unknown                 & trends  47.48%
+2020-12-07 23:37  ---  Biden up 725,061  Unknown                 Δ:       0 (n/a)             100.00% precincts  Unknown                 & trends  47.48%
 2020-12-07 21:42  ---  Biden up 725,061  Unknown                 Δ:     198 (Trump +17.7%)    99.61% precincts   Unknown                 & trends  47.48%
 2020-12-02 16:42  ---  Biden up 725,131  Left (est.): 206        Δ:     324 (Trump +21.6%)    99.61% precincts   Trump needs 178898.46%  & trends  47.38%
 2020-12-02 15:52  ---  Biden up 725,271  Left (est.): 507        Δ:   1,302 (Biden +15.1%)    99.56% precincts   Trump needs 72732.24%   & trends  47.16%
