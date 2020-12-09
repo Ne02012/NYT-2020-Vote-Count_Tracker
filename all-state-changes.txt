@@ -1,5 +1,5 @@
 ----------------------  --------------------------------------------------------------------------------
-Last updated:           2020-12-09 20:43 UTC
+Last updated:           2020-12-09 20:51 UTC
 Latest batch received:  2020-12-08 20:01 UTC
 Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 ----------------------  --------------------------------------------------------------------------------
@@ -467,7 +467,7 @@ Colorado (EV: 9) Total Votes: (Biden: 1,804,352, Trump: 1,364,607)
 
 Connecticut (EV: 7) Total Votes: (Biden: 1,080,680, Trump: 715,291)
 ----------------  ---  ----------------  ----------------------  --------------------------  -----------------  ----------------------  ----------------
-2020-12-09 20:21  ***  Biden up 365,389  Left (est.): 37         Δ:       0 (n/a)            100.00% precincts  Trump needs 501601.95%  & trends  36.52%
+2020-12-09 20:21  ---  Biden up 365,389  Left (est.): 37         Δ:       0 (n/a)            100.00% precincts  Trump needs 501601.95%  & trends  36.52%
 2020-12-04 19:36  ---  Biden up 365,389  Unknown                 Δ:       0 (n/a)            100.00% precincts  Unknown                 & trends  36.52%
 2020-12-02 22:05  ---  Biden up 365,389  Unknown                 Δ:       0 (n/a)            100.00% precincts  Unknown                 & trends  36.52%
 2020-12-01 21:54  ---  Biden up 365,389  Unknown                 Δ:       0 (n/a)            100.00% precincts  Unknown                 & trends  36.52%
