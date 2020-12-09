@@ -1,5 +1,5 @@
 ---------------------------------  --------------------------------------------------------------------------------
-Last updated:                      2020-12-09 03:54 UTC
+Last updated:                      2020-12-09 04:29 UTC
 Latest batch received: (Missouri)  2020-12-08 20:01 UTC
 Prettier web version:              https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 ---------------------------------  --------------------------------------------------------------------------------
@@ -2055,7 +2055,7 @@ Mississippi (EV: 6) Total Votes: (Trump: 756,764, Biden: 539,398)
 
 Missouri (EV: 10) Total Votes: (Trump: 1,718,645, Biden: 1,253,788)
 ----------------  ---  ----------------  ----------------------  ---------------------------  ----------------  -------------------  ----------------
-2020-12-09 03:41  ***  Trump up 464,857  Left (est.): 33,280     Δ:      34 (Trump +32.4%)    96.29% precincts  Biden needs 762.02%  & trends  55.24%
+2020-12-09 03:41  ---  Trump up 464,857  Left (est.): 33,280     Δ:      34 (Trump +32.4%)    96.29% precincts  Biden needs 762.02%  & trends  55.24%
 2020-12-08 21:41  ---  Trump up 464,835  Left (est.): 33,255     Δ:     926 (Trump +26.1%)    96.29% precincts  Biden needs 762.52%  & trends  55.27%
 2020-11-24 20:45  ---  Trump up 464,351  Left (est.): 34,076     Δ:   1,417 (Biden +34.0%)    96.29% precincts  Biden needs 744.63%  & trends  55.95%
 2020-11-20 14:51  ---  Trump up 465,314  Left (est.): 35,529     Δ:     104 (Trump +30.8%)    96.29% precincts  Biden needs 717.60%  & trends  54.15%
