@@ -1,8 +1,8 @@
----------------------------------  --------------------------------------------------------------------------------
-Last updated:                      2020-12-16 21:57 UTC
-Latest batch received: (Illinois)  2020-12-08 20:01 UTC
-Prettier web version:              https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
----------------------------------  --------------------------------------------------------------------------------
+----------------------  --------------------------------------------------------------------------------
+Last updated:           2020-12-16 22:28 UTC
+Latest batch received:  2020-12-08 20:01 UTC
+Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
+----------------------  --------------------------------------------------------------------------------
 
 Alabama (EV: 9) Total Votes: (Trump: 1,441,168, Biden: 849,648)
 ----------------  ---  ----------------  ----------------------  ---------------------------  -----------------  -----------------------  ----------------
@@ -954,7 +954,7 @@ Idaho (EV: 4) Total Votes: (Trump: 554,118, Biden: 287,021)
 
 Illinois (EV: 20) Total Votes: (Biden: 3,471,915, Trump: 2,446,891)
 ----------------  ---  ------------------  ----------------------  ---------------------------  ----------------  --------------------  ----------------
-2020-12-16 21:41  ***  Biden up 1,025,024  Unknown                 Δ:       0 (n/a)             90.75% precincts  Unknown               & trends  38.46%
+2020-12-16 21:41  ---  Biden up 1,025,024  Unknown                 Δ:       0 (n/a)             90.75% precincts  Unknown               & trends  38.46%
 2020-12-08 15:52  ---  Biden up 1,025,024  Unknown                 Δ:     393 (Biden + 9.8%)    90.75% precincts  Unknown               & trends  38.46%
 2020-12-04 19:16  ---  Biden up 1,024,947  Unknown                 Δ:   8,701 (Trump + 4.5%)    90.75% precincts  Unknown               & trends  38.17%
 2020-12-04 18:51  ---  Biden up 1,025,722  Left (est.): 7,294      Δ:   1,001 (Biden + 2.4%)    90.27% precincts  Trump needs 7223.87%  & trends  30.50%
