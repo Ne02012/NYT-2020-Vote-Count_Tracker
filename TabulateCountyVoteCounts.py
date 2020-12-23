@@ -388,9 +388,9 @@ def fetch_all_records():
                             print('%s generated an exception: %s' % (url, exc))                            
 
         out.sort(key=lambda row: row.file_timestamp)
-        grouped = collections.defaultdict(list)
+        grouped = collections.defaultdict(lambda: collections.defaultdict(list))
         for row in out:
-                grouped[row.state_index].append(row)
+                grouped[row.state_index][row.County_Name].append(row)
 
         return grouped
 
@@ -400,7 +400,8 @@ def write_csv(grouped):
                 wr = csv.writer(csvfile)
                 wr.writerow(('state', 'timestamp',) + InputRecord._fields[2:])
                 for state_index in sorted(grouped):
-                        state_records = grouped[state_index]
+                    for county in sorted(grouped[state_index]):
+                        state_records = grouped[state_index][county]
                         ref = state_records[-1].Votes_Remaining_File[:-5]
                         cache_path = git_save(ref, 'results.json')
                         with open(cache_path, encoding="utf8") as f:
