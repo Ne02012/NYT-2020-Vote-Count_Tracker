@@ -42,9 +42,13 @@ InputRecord = collections.namedtuple(
         'Precincts_Reporting',
         'provisional_outstanding',
         'provisional_count_progress',
+        'absentee_max_ballots',
         'Total_Votes',
         'Total_Non_Absentee_Votes',
         'Total_Absentee_Votes',
+        'Total_Votes_From_Precincts',
+        'Total_Non_Absentee_Votes_From_Precincts',
+        'Total_Absentee_Votes_From_Precincts',
         'Biden_Votes',
         'Trump_Votes',
         'Jorgensen_Votes',
@@ -54,6 +58,9 @@ InputRecord = collections.namedtuple(
         'Biden_Absentee_Votes',
         'Trump_Absentee_Votes',
         'Jorgensen_Absentee_Votes',
+        'Biden_Absentee_Votes_From_Precincts',
+        'Trump_Absentee_Votes_From_Precincts',
+        'Jorgensen_Absentee_Votes_From_Precincts',
         'Biden_ElectionDay_Votes',
         'Trump_ElectionDay_Votes',
         'Jorgensen_ElectionDay_Votes',
@@ -174,15 +181,21 @@ def fetch_precinct_data(session, url):
 
 def fetch_precinct_record(record, search_index, precinct_array):
 
-        Total_Non_Absentee_Votes = record.Total_Non_Absentee_Votes if 'NA' != record.Total_Non_Absentee_Votes else precinct_array[search_index, 1]+precinct_array[search_index, 2]+precinct_array[search_index, 3]
-        Total_Absentee_Votes = record.Total_Absentee_Votes if 'NA' != record.Total_Absentee_Votes else precinct_array[search_index, 0]
+        Total_Non_Absentee_Votes_From_Precincts = precinct_array[search_index, 1]+precinct_array[search_index, 2]+precinct_array[search_index, 3]
+        Total_Non_Absentee_Votes = record.Total_Non_Absentee_Votes if 'NA' != record.Total_Non_Absentee_Votes else Total_Non_Absentee_Votes_From_Precincts
+        Total_Absentee_Votes_From_Precincts = precinct_array[search_index, 0]
+        Total_Absentee_Votes = record.Total_Absentee_Votes if 'NA' != record.Total_Absentee_Votes else Total_Absentee_Votes_From_Precincts
+        Total_Votes_From_Precincts = Total_Non_Absentee_Votes_From_Precincts + Total_Absentee_Votes_From_Precincts
         Total_Votes = record.Total_Votes if 'NA' != record.Total_Votes else Total_Absentee_Votes + Total_Non_Absentee_Votes
         # Check for votes that were reported as aggregates
         if 0 == Total_Votes:
             Total_Votes = precinct_array[search_index, 0]
-        Biden_Absentee_Votes = record.Biden_Absentee_Votes if 'NA' != record.Biden_Absentee_Votes else precinct_array[search_index, 5]
-        Trump_Absentee_Votes = record.Trump_Absentee_Votes if 'NA' != record.Biden_Absentee_Votes else precinct_array[search_index, 10]
-        Jorgensen_Absentee_Votes = record.Jorgensen_Absentee_Votes if 'NA' != record.Jorgensen_Absentee_Votes else precinct_array[search_index, 15]
+        Biden_Absentee_Votes_From_Precincts = precinct_array[search_index, 5]
+        Trump_Absentee_Votes_From_Precincts = precinct_array[search_index, 10]
+        Jorgensen_Absentee_Votes_From_Precincts = precinct_array[search_index, 15]
+        Biden_Absentee_Votes = record.Biden_Absentee_Votes if 'NA' != record.Biden_Absentee_Votes else Biden_Absentee_Votes_From_Precincts
+        Trump_Absentee_Votes = record.Trump_Absentee_Votes if 'NA' != record.Trump_Absentee_Votes else Trump_Absentee_Votes_From_Precincts
+        Jorgensen_Absentee_Votes = record.Jorgensen_Absentee_Votes if 'NA' != record.Jorgensen_Absentee_Votes else Jorgensen_Absentee_Votes_From_Precincts
         Biden_ElectionDay_Votes = precinct_array[search_index, 7]
         Trump_ElectionDay_Votes = precinct_array[search_index, 12]
         Jorgensen_ElectionDay_Votes = precinct_array[search_index, 17]
@@ -212,6 +225,9 @@ def fetch_precinct_record(record, search_index, precinct_array):
                             Total_Votes = Total_Votes,
                             Total_Non_Absentee_Votes = Total_Non_Absentee_Votes,
                             Total_Absentee_Votes = Total_Absentee_Votes,
+                            Total_Votes_From_Precincts = Total_Votes_From_Precincts,
+                            Total_Non_Absentee_Votes_From_Precincts = Total_Non_Absentee_Votes_From_Precincts,
+                            Total_Absentee_Votes_From_Precincts = Total_Absentee_Votes_From_Precincts,
                             Biden_Votes = Biden_Votes,
                             Trump_Votes = Trump_Votes,
                             Jorgensen_Votes = Jorgensen_Votes,
@@ -221,6 +237,9 @@ def fetch_precinct_record(record, search_index, precinct_array):
                             Biden_Absentee_Votes = Biden_Absentee_Votes,
                             Trump_Absentee_Votes = Trump_Absentee_Votes,
                             Jorgensen_Absentee_Votes = Jorgensen_Absentee_Votes,
+                            Biden_Absentee_Votes_From_Precincts = Biden_Absentee_Votes_From_Precincts,
+                            Trump_Absentee_Votes_From_Precincts = Trump_Absentee_Votes_From_Precincts,
+                            Jorgensen_Absentee_Votes_From_Precincts = Jorgensen_Absentee_Votes_From_Precincts,
                             Biden_ElectionDay_Votes = Biden_ElectionDay_Votes,
                             Trump_ElectionDay_Votes = Trump_ElectionDay_Votes,
                             Jorgensen_ElectionDay_Votes = Jorgensen_ElectionDay_Votes,
@@ -249,8 +268,9 @@ def fetch_record(session, ref, out, lock):
                                      county['precincts'],
                                      county['reporting'],
                                      county['provisional_outstanding'] if None != county['provisional_outstanding'] else 'null',
-                                     county['provisional_count_progress'] if None != county['provisional_count_progress'] else 'null'] for county in race['counties']]
-                                     + [['null']*8]*(max_counties - len(race['counties'])) for race in races])
+                                     county['provisional_count_progress'] if None != county['provisional_count_progress'] else 'null',
+                                     county['absentee_max_ballots'] if None != county['absentee_max_ballots'] else 'null'] for county in race['counties']]
+                                     + [['null']*9]*(max_counties - len(race['counties'])) for race in races])
         county_results = np.block([[[int(county['votes']) if None != county['votes'] else 0,
                                      int(county['results']['bidenj']) if None != county['results']['bidenj'] else 0,
                                      int(county['results']['trumpd']) if None != county['results']['trumpd'] else 0,
@@ -275,7 +295,7 @@ def fetch_record(session, ref, out, lock):
                         recordFetched[dictKey] = True
                         lock.release()
 
-                precinct_metadata_url = county_strings[index][0][0] if 'null' != county_strings[index][0][0] and 'NA' != county_strings[index][0][0] else 'NA'
+                precinct_metadata_url = county_strings[index][0][0] if (('null' != county_strings[index][0][0]) and ('NA' != county_strings[index][0][0])) else 'NA'
                 precinct_metadata_filename = precinct_metadata_url.split('/')[-1].replace(':','-') if 'NA' != precinct_metadata_url else 'NA'
 
                 # Fetch precinct metadata, if available
@@ -293,14 +313,15 @@ def fetch_record(session, ref, out, lock):
                                     county_results[index][i][0],
                                     county_results_non_absentee[index][i][0],
                                     county_results_absentee[index][i][0],
+                                    *(['NA']*3),
                                     *county_results[index][i][1:],
                                     *county_results_non_absentee[index][i][1:],
                                     *county_results_absentee[index][i][1:],
-                                    *(['NA']*9)
+                                    *(['NA']*12)
                                 )
 
                         # Fetch precinct metadata, if available
-                        if 'NA' != precinct_metadata_url and county_strings[index][i][2] in locality_dict:
+                        if (('NA' != precinct_metadata_url) and (county_strings[index][i][2] in locality_dict)):
                                 record = fetch_precinct_record(record, locality_dict[county_strings[index][i][2]], precinct_array)
 
                         out.append(record)
@@ -321,7 +342,7 @@ def fetch_precinct_only_record(session, url, out):
                     url.split('/')[-1].replace(':','-'),
                     timestamp,
                     locality,
-                    *(['NA']*26)
+                    *(['NA']*33)
                 )
 
         # Fetch precinct metadata
