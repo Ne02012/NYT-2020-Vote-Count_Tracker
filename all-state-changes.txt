@@ -1,5 +1,5 @@
 ------------------------------  --------------------------------------------------------------------------------
-Last updated:                   2021-01-05 15:46 UTC
+Last updated:                   2021-01-05 16:15 UTC
 Latest batch received: (Idaho)  2020-12-31 01:36 UTC
 Prettier web version:           https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 ------------------------------  --------------------------------------------------------------------------------
@@ -941,7 +941,7 @@ Hawaii (EV: 4) Total Votes: (Biden: 366,130, Trump: 196,864)
 
 Idaho (EV: 4) Total Votes: (Trump: 554,118, Biden: 287,021)
 ----------------  ---  ----------------  --------------------  -------------------------  ----------------  ----------------------  ----------------
-2021-01-05 15:26  ***  Trump up 267,097  Left (est.): 140      Δ: Unknown (Trump +50.0%)  99.90% precincts  Biden needs 98489.51%   & trends  13.17%
+2021-01-05 15:26  ---  Trump up 267,097  Left (est.): 140      Δ: Unknown (Trump +50.0%)  99.90% precincts  Biden needs 98489.51%   & trends  13.17%
 2021-01-05 15:01  ---  Trump up 267,098  Unknown               Δ:       0 (n/a)           99.90% precincts  Unknown                 & trends  13.17%
 2020-12-18 21:21  ---  Trump up 267,098  Left (est.): 47       Δ:       1 (Trump +50.0%)  99.90% precincts  Biden needs 293275.17%  & trends  13.17%
 2020-11-20 23:42  ---  Trump up 267,097  Left (est.): 48       Δ: Unknown (Trump + 0.0%)  99.90% precincts  Biden needs 287165.23%  & trends  13.15%
