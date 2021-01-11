@@ -1,8 +1,8 @@
--------------------------------  --------------------------------------------------------------------------------
-Last updated:                    2021-01-11 14:43 UTC
-Latest batch received: (Alaska)  2021-01-11 14:42 UTC
-Prettier web version:            https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
--------------------------------  --------------------------------------------------------------------------------
+----------------------  --------------------------------------------------------------------------------
+Last updated:           2021-01-11 15:10 UTC
+Latest batch received:  2021-01-11 14:42 UTC
+Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
+----------------------  --------------------------------------------------------------------------------
 
 Alabama (EV: 9) Total Votes: (Trump: 1,441,170, Biden: 849,624)
 ----------------  ---  ----------------  ----------------------  ---------------------------  -----------------  -----------------------  ----------------
@@ -27,7 +27,7 @@ Alabama (EV: 9) Total Votes: (Trump: 1,441,170, Biden: 849,624)
 
 Alaska (EV: 3) Total Votes: (Trump: 189,951, Biden: 153,778)
 ----------------  ---  ---------------  --------------------  --------------------------  -----------------  -------------------  ----------------
-2021-01-11 14:42  ***  Trump up 36,173  Left (est.): 31,816   Δ:       0 (n/a)            100.00% precincts  Biden needs 109.46%  & trends  49.45%
+2021-01-11 14:42  ---  Trump up 36,173  Left (est.): 31,816   Δ:       0 (n/a)            100.00% precincts  Biden needs 109.46%  & trends  49.45%
 2020-12-02 18:41  ---  Trump up 36,173  Left (est.): 31,816   Δ:       0 (n/a)            100.00% precincts  Biden needs 109.46%  & trends  49.45%
 2020-12-02 17:12  ---  Trump up 36,173  Left (est.): 31,816   Δ:       0 (n/a)            100.00% precincts  Biden needs 109.46%  & trends  49.45%
 2020-12-02 16:42  ---  Trump up 36,173  Left (est.): 31,816   Δ:       0 (n/a)            100.00% precincts  Biden needs 109.46%  & trends  49.45%
