@@ -1,8 +1,8 @@
-------------------------------------------  --------------------------------------------------------------------------------
-Last updated:                               2021-01-15 21:16 UTC
-Latest batch received: (Montana, Nebraska)  2021-01-13 14:47 UTC
-Prettier web version:                       https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
-------------------------------------------  --------------------------------------------------------------------------------
+----------------------  --------------------------------------------------------------------------------
+Last updated:           2021-01-15 21:58 UTC
+Latest batch received:  2021-01-13 14:47 UTC
+Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
+----------------------  --------------------------------------------------------------------------------
 
 Alabama (EV: 9) Total Votes: (Trump: 1,441,170, Biden: 849,624)
 ----------------  ---  ----------------  ----------------------  ---------------------------  -----------------  -----------------------  ----------------
@@ -2109,7 +2109,7 @@ Missouri (EV: 10) Total Votes: (Trump: 1,718,736, Biden: 1,253,014)
 
 Montana (EV: 3) Total Votes: (Trump: 343,602, Biden: 244,786)
 ----------------  ---  ---------------  --------------------  -------------------------  -----------------  --------------------  ----------------
-2021-01-15 21:02  ***  Trump up 98,816  Left (est.): 2,888    Δ:       0 (n/a)           100.00% precincts  Biden needs 1805.25%  & trends  34.09%
+2021-01-15 21:02  ---  Trump up 98,816  Left (est.): 2,888    Δ:       0 (n/a)           100.00% precincts  Biden needs 1805.25%  & trends  34.09%
 2021-01-15 20:22  ---  Trump up 98,816  Left (est.): 879      Δ:       0 (n/a)           100.00% precincts  Biden needs 5816.96%  & trends  34.09%
 2020-11-19 18:47  ---  Trump up 98,816  Left (est.): 812      Δ:      15 (Trump +30.0%)  100.00% precincts  Biden needs 6292.81%  & trends  34.09%
 2020-11-12 14:25  ---  Trump up 98,807  Left (est.): 824      Δ:   1,952 (Trump +13.5%)  98.79% precincts   Biden needs 6201.33%  & trends  34.10%
@@ -2139,7 +2139,7 @@ Montana (EV: 3) Total Votes: (Trump: 343,602, Biden: 244,786)
 
 Nebraska (EV: 5) Total Votes: (Trump: 556,846, Biden: 374,583)
 ----------------  ---  ----------------  --------------------  --------------------------  -----------------  ---------------------  -----------------
-2021-01-15 21:02  ***  Trump up 182,263  Unknown               Δ:       0 (n/a)            100.00% precincts  Unknown                & trends  -54.42%
+2021-01-15 21:02  ---  Trump up 182,263  Unknown               Δ:       0 (n/a)            100.00% precincts  Unknown                & trends  -54.42%
 2020-12-10 21:01  ---  Trump up 182,263  Unknown               Δ:       0 (n/a)            100.00% precincts  Unknown                & trends  -54.42%
 2020-12-10 20:46  ---  Trump up 182,263  Unknown               Δ:       0 (n/a)            100.00% precincts  Unknown                & trends  -54.42%
 2020-12-10 20:41  ---  Trump up 182,263  Unknown               Δ:       0 (n/a)            100.00% precincts  Unknown                & trends  -54.42%
