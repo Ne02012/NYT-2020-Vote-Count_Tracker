@@ -1,5 +1,5 @@
 --------------------------------------  --------------------------------------------------------------------------------
-Last updated:                           2021-01-27 14:30 UTC
+Last updated:                           2021-01-27 15:01 UTC
 Latest batch received: (West Virginia)  2021-01-13 14:47 UTC
 Prettier web version:                   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 --------------------------------------  --------------------------------------------------------------------------------
@@ -3741,7 +3741,7 @@ Washington (EV: 12) Total Votes: (Biden: 2,369,612, Trump: 1,584,651)
 
 West Virginia (EV: 5) Total Votes: (Trump: 545,382, Biden: 235,984)
 ----------------  ---  ----------------  --------------------  -------------------------  -----------------  ---------------------  ----------------
-2021-01-27 14:27  ***  Trump up 309,398  Unknown               Δ:       0 (n/a)           100.00% precincts  Unknown                & trends  35.60%
+2021-01-27 14:27  ---  Trump up 309,398  Unknown               Δ:       0 (n/a)           100.00% precincts  Unknown                & trends  35.60%
 2020-12-06 14:16  ---  Trump up 309,398  Unknown               Δ:       0 (n/a)           100.00% precincts  Unknown                & trends  35.60%
 2020-12-06 13:47  ---  Trump up 309,398  Unknown               Δ:       0 (n/a)           99.82% precincts   Unknown                & trends  35.60%
 2020-12-01 21:54  ---  Trump up 309,398  Unknown               Δ:     468 (Trump +20.7%)  99.12% precincts   Unknown                & trends  35.60%
