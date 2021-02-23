@@ -1,5 +1,5 @@
 ------------------------------  --------------------------------------------------------------------------------
-Last updated:                   2021-02-23 13:48 UTC
+Last updated:                   2021-02-23 14:26 UTC
 Latest batch received: (Texas)  2021-02-12 15:01 UTC
 Prettier web version:           https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 ------------------------------  --------------------------------------------------------------------------------
@@ -3312,7 +3312,7 @@ Tennessee (EV: 11) Total Votes: (Trump: 1,852,475, Biden: 1,143,711)
 
 Texas (EV: 38) Total Votes: (Trump: 5,890,347, Biden: 5,259,126)
 ----------------  ---  ----------------  -----------------------  ---------------------------  -----------------  --------------------  ----------------
-2021-02-23 13:31  ***  Trump up 631,221  Left (est.): 6,747       Δ:       0 (n/a)             100.00% precincts  Biden needs 4797.26%  & trends  55.27%
+2021-02-23 13:31  ---  Trump up 631,221  Left (est.): 6,747       Δ:       0 (n/a)             100.00% precincts  Biden needs 4797.26%  & trends  55.27%
 2021-02-17 18:01  ---  Trump up 631,221  Left (est.): 6,747       Δ:       0 (n/a)             98.72% precincts   Biden needs 4797.26%  & trends  55.27%
 2021-02-17 17:01  ---  Trump up 631,221  Left (est.): 6,747       Δ:       0 (n/a)             96.70% precincts   Biden needs 4797.26%  & trends  55.27%
 2021-01-08 20:27  ---  Trump up 631,221  Left (est.): 6,747       Δ:       0 (n/a)             95.20% precincts   Biden needs 4797.26%  & trends  55.27%
