@@ -4,7 +4,7 @@
   <title>NYT 2020 Election Scraper RSS Feed</title>
   <link>https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html</link>
   <description>Latest results from battleground states.</description>
-  <lastBuildDate>Fri, 12 Feb 2021 15:01:36 -0000</lastBuildDate>
+  <lastBuildDate>Mon, 08 Mar 2021 00:31:40 -0000</lastBuildDate>
   <item>
    <description>Alaska (EV: 3): Trump +36173</description>
    <pubDate>Mon, 11 Jan 2021 14:42:28 -0000</pubDate>
@@ -21,9 +21,9 @@
    <guid isPermaLink="false">georgia@1610549239.831</guid>
   </item>
   <item>
-   <description>North Carolina (EV: 15): Trump +74481</description>
-   <pubDate>Fri, 08 Jan 2021 18:07:18 -0000</pubDate>
-   <guid isPermaLink="false">north-carolina@1610129238.917</guid>
+   <description>North Carolina (EV: 15): Trump +74483</description>
+   <pubDate>Mon, 08 Mar 2021 00:31:40 -0000</pubDate>
+   <guid isPermaLink="false">north-carolina@1615163500.297</guid>
   </item>
   <item>
    <description>Nevada (EV: 6): Biden +33596</description>
