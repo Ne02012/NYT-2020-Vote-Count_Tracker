@@ -1,5 +1,5 @@
 ----------------------  --------------------------------------------------------------------------------
-Last updated:           2022-02-15 16:57 UTC
+Last updated:           2022-02-15 17:27 UTC
 Latest batch received:  2021-03-08 00:31 UTC
 Prettier web version:   https://alex.github.io/nyt-2020-election-scraper/battleground-state-changes.html
 ----------------------  --------------------------------------------------------------------------------
